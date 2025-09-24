@@ -47,6 +47,52 @@ Returns latest scored leads.
 ### GET /results/export
 Returns CSV of the latest scored results.
 
+## Postman Usage (Step-by-step)
+Base URL: `http://localhost:3000`
+
+1) POST /offer
+- Method: POST
+- URL: http://localhost:3000/offer
+- Headers: `Content-Type: application/json`
+- Body (raw → JSON):
+```json
+{
+  "name": "AI Outreach Automation",
+  "value_props": ["24/7 outreach", "6x more meetings"],
+  "ideal_use_cases": ["B2B SaaS mid-market"],
+  "decision_roles": ["Head of Growth", "VP Sales", "Founder"],
+  "influencer_roles": ["Growth Manager", "Sales Ops"],
+  "icp_industries": ["SaaS", "Software"]
+}
+```
+
+2) POST /leads/upload
+- Method: POST
+- URL: http://localhost:3000/leads/upload
+- Body: `form-data`
+  - Key: `file` (type: File)
+  - Value: select `sample-leads.csv` in the repo
+- Note: Do not manually set `Content-Type` — let Postman set `multipart/form-data` automatically.
+
+3) POST /score
+- Method: POST
+- URL: http://localhost:3000/score
+- Body: none
+
+4) GET /results
+- Method: GET
+- URL: http://localhost:3000/results
+
+5) GET /results/export (CSV)
+- Method: GET
+- URL: http://localhost:3000/results/export
+- In Postman, choose “Send and Download” to save the CSV.
+
+Troubleshooting:
+- “Offer or Leads missing”: Run steps 1 and 2 after every server restart.
+- CSV error: Ensure `sample-leads.csv` has no extra blank lines. Body type must be `form-data`, key must be exactly `file`.
+- AI fallback message shown: Set `OPENAI_API_KEY` in `.env` and restart the server.
+
 ## Scoring Logic
 - Role relevance: decision maker +20, influencer +10
 - Industry match: exact ICP +20, adjacent +10
