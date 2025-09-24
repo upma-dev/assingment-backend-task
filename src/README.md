@@ -132,6 +132,6 @@ curl -sL http://localhost:3000/results/export -o results.csv
 - Keep your OpenAI key private.
 - For deployment, you can use Render or Railway. Set env vars there.
 - Rule logic implemented in `src/services/scoring.js`; AI prompt in `src/services/aiClient.js`.
-- If `OPENAI_API_KEY` is not set, a local heuristic fallback is used for AI intent.
+- If `OPENAI_API_KEY` is not set, a local heuristic fallback is used for AI intent. 
 
 
