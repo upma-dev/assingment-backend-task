@@ -2,6 +2,9 @@
 
 Backend service to accept an Offer, upload Leads CSV, score leads via rule logic + AI, and return/export results.
 
+## Deployment
+Live API: [https://assingment-backend-task.vercel.app](https://assingment-backend-task.vercel.app)
+
 ## Tech Stack
 - Node.js + Express
 - OpenAI (optional; local heuristic fallback included)
